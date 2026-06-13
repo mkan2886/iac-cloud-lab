@@ -13,7 +13,7 @@ provider "azurerm" {
 
 resource "azurerm_resource_group" "rg" {
   name     = "rg-lab-cloud-tech"
-  location = "westeurope"
+  location = "polandcentral"
 }
 
 resource "azurerm_virtual_network" "vnet" {
@@ -35,7 +35,7 @@ resource "azurerm_public_ip" "pip" {
   location            = azurerm_resource_group.rg.location
   resource_group_name = azurerm_resource_group.rg.name
   allocation_method   = "Static"
-  sku                 = "Basic"
+  sku                 = "Standard"
 }
 
 resource "azurerm_network_security_group" "nsg" {
@@ -102,7 +102,7 @@ resource "azurerm_linux_virtual_machine" "vm" {
   name                = "vm-lab-cloud"
   resource_group_name = azurerm_resource_group.rg.name
   location            = azurerm_resource_group.rg.location
-  size                = "Standard_B1s"
+  size                = "Standard_B2als_v2"
   admin_username      = "azureuser"
   network_interface_ids = [azurerm_network_interface.nic.id]
 
