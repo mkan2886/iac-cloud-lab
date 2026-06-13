@@ -35,13 +35,10 @@ cd "$ROOT_DIR/lab04-ansible"
 cp inventory.ini.template inventory.ini
 sed -i "s/<PUBLIC_IP>/$VM_IP/g" inventory.ini
 
-echo "=== 7. Uruchomienie kontenera Flask przez Ansible ==="
+echo "=== 7. Instalacja Apache przez Ansible ==="
 export ANSIBLE_HOST_KEY_CHECKING=False
-ansible-playbook -i inventory.ini playbook-flask-container.yml
+ansible-playbook -i inventory.ini playbook-apache-task.yml
 
 echo
 echo "=== Gotowe ==="
-echo "Flask container: http://$VM_IP:5000"
 echo "Apache task:     http://$VM_IP"
-echo
-echo "Apache nie jest konfigurowany automatycznie. To pozostaje zadaniem studenckim."
