@@ -35,6 +35,14 @@ cd "$ROOT_DIR/lab04-ansible"
 cp inventory.ini.template inventory.ini
 sed -i "s/<PUBLIC_IP>/$VM_IP/g" inventory.ini
 
+echo "=== 6. Przygotowanie inventory Ansible ==="
+cd "$ROOT_DIR/lab04-ansible"
+cp inventory.ini.template inventory.ini
+sed -i "s/<PUBLIC_IP>/$VM_IP/g" inventory.ini
+
+echo "=== 6.1 Przygotowanie pliku index.html ==="
+cp files/index.html.template files/index.html
+
 echo "=== 7. Instalacja Apache przez Ansible ==="
 export ANSIBLE_HOST_KEY_CHECKING=False
 ansible-playbook -i inventory.ini playbook-apache-task.yml
